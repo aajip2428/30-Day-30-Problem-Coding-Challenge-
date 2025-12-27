@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class Demo {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter the first word: ");
+        String str1 = sc.nextLine();
+
+        System.out.print("Enter the second word: ");
+        String str2 = sc.nextLine();
+
+        if (str1.length() != str2.length()) {
+            System.out.println("Invalid");
+        }
+
+        int[] arr = new int[26];
+
+        for (int i = 0; i < str1.length(); i++) {
+            arr[str1.charAt(i) - 'a']++;
+            arr[str2.charAt(i) - 'a']--;
+        }
+
+        boolean isAnagram = true;
+
+        for (int i = 0; i < 26; i++) {
+            if (arr[i] != 0) {
+                isAnagram = false;
+                break;
+            }
+        }
+
+        if (isAnagram) {
+            System.out.println("The given word is Anagram ");
+        } else {
+            System.out.println("Not anagram");
+        }
+    }
+}
